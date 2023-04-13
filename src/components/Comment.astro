@@ -1,0 +1,43 @@
+---
+import Image from "../components/Image.astro";
+---
+  <div class="comment-container">
+    <Image image={"public/assets/julia.jpeg"}/>
+    <div class="comment-content">
+      <p>Vestibulum euismod, leo eget varius gravida, eros enim interdum urna, non rutrum enim ante quis metus. Duis porta ornare nulla ut bibendum</p>
+      <div class="comment-details">
+        <p class="author">Rosie</p>
+        <p>7 August 2023 at 3:12 PM</p>
+      </div>
+    </div>
+  </div>
+
+
+<style>
+.comment-container{
+display: flex;
+align-items: center;
+}
+.page-container {
+padding: 40px;
+}
+.comment-card {
+display: flex;
+}
+.profile-image {
+height: 64px;
+width: 64px;
+border-radius: 50%;
+margin-right: 15px;
+}
+.comment-content {
+display: flex;
+flex-direction: column;
+}
+.comment-details {
+display: flex;
+}
+.author {
+margin-right: 10px;
+}
+ </style>

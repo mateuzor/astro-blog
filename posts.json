@@ -1,0 +1,36 @@
+{
+    "posts": [
+      {
+        "id": 1,
+        "titulo": "A importância da atividade física",
+        "conteudo": "Praticar atividade física regularmente traz diversos benefícios para a saúde, como a redução do risco de doenças cardiovasculares e o controle do peso corporal. Além disso, exercitar-se também melhora o humor e ajuda a combater o estresse.",
+        "data_criacao": "2022-01-15",
+        "category":"health",
+        "autor": "Mateus Ramos"
+      },
+      {
+        "id": 2,
+        "titulo": "Os benefícios da leitura",
+        "conteudo": "Ler regularmente ajuda a desenvolver a criatividade, aprimora o vocabulário e a escrita, além de ser uma forma de relaxar e se desligar das preocupações do dia a dia. A leitura também pode contribuir para a melhoria da saúde mental e emocional.",
+        "data_criacao": "2022-02-01",
+        "category":"reading",
+        "autor": "Mateus Ramos"
+      },
+      {
+        "id": 3,
+        "titulo": "A importância da diversidade nas empresas",
+        "conteudo": "Incluir pessoas com diferentes origens, culturas e experiências nas equipes de trabalho pode trazer uma série de benefícios para as empresas, como maior inovação, criatividade e resolução de problemas. Além disso, a diversidade também pode contribuir para a construção de um ambiente de trabalho mais inclusivo e acolhedor.",
+        "data_criacao": "2022-03-10",
+        "category":"work",
+        "autor": "Mateus Ramos"
+      },
+      {
+        "id": 4,
+        "titulo": "O impacto das mudanças climáticas",
+        "conteudo": "As mudanças climáticas têm sido um dos principais desafios enfrentados pela humanidade nos últimos anos. A elevação das temperaturas, o aumento do nível do mar e a intensificação de eventos climáticos extremos podem trazer graves consequências para o meio ambiente e para a vida humana. Por isso, é fundamental que sejam adotadas medidas para reduzir as emissões de gases de efeito estufa e mitigar os efeitos das mudanças climáticas.",
+        "data_criacao": "2022-04-22",
+        "category":"world",
+        "autor": "Mateus Ramos"
+      }
+    ]
+  }
