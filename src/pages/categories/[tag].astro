@@ -1,10 +1,20 @@
 ---
-import BlogPost from '../components/BlogPost.astro';
-import Category from '../components/Category.astro';
-import Banner from '../components/Banner.astro';
-import posts from 'data/posts';
+import BlogPost from '../../components/BlogPost.astro';
+import posts from "data/posts.js";
 
-const tags = ["health", "learning"]
+export async function getStaticPaths() {
+
+  return posts.map((post) => {
+    console.log(posts)
+    return {
+      params: { tag: post.tag.toString() },
+      props: { post },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const filteredPostsByTag: any = posts.filter(post => post.tag === tag);
 ---
 
 <html lang="en">
@@ -17,33 +27,24 @@ const tags = ["health", "learning"]
 	</head>
 	<body>
 		<div class="page-container">
-			<Banner />
 			<div class="title-row">
-				<h3>Posts</h3>
-				<ul class="tags-list">
-					Hot Tags:{tags.map((tag)=> {
-						return <li>
-						<a href={`/categories/${tag}`}>#{tag.toLocaleLowerCase()}</a>
-					</li>
-					})}
-				</ul>
+				<h3>{`${tag.charAt(0).toUpperCase()}${tag.slice(1)}`} Posts</h3>
 			</div>
 			<div class="posts-container">
-			{posts.map((post) => {
+			{posts.filter((post) => post.tag === tag).map((post) => {
 				console.log(posts)
 				return <BlogPost id={post.id} title={post.titulo} tag={post.tag} date={post.data_criacao} image={post.image} />})}
 			</div>
-			<Category/>
 		</div>
 	</body>
 </html>
 
 <style>
-	.page-container {
-	padding: 40px;
-	}
+.page-container {
+padding: 40px;
+}
 
-	.title-row {
+.title-row {
 display: flex;
 justify-content: space-between;
 }
@@ -56,13 +57,13 @@ margin-right: 5px;
 text-decoration: none;
 }
 
-	.posts-container {
-		flex-wrap: wrap;
-		display: flex;
-		flex-direction: row;
-	}
+.posts-container {
+flex-wrap: wrap;
+display: flex;
+flex-direction: row;
+}
 
-	.color {
-		color:red;
-	}
+.color {
+color:red;
+}
  </style>

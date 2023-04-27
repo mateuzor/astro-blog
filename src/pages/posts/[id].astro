@@ -1,0 +1,130 @@
+---
+import Comment from "../../components/Comment.astro";
+import posts from "data/posts.js";
+
+export async function getStaticPaths() {
+  // const products = await fetchProducts();
+
+  return posts.map((post) => {
+    console.log(posts)
+    return {
+      params: { id: post.id.toString() },
+      props: { post },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const filteredPostsById: any = posts.filter(post => String(post.id) === String(id));
+
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro Blog</title>
+	</head>
+	<body>
+		<div class="page-container">
+      <h1>
+        A importância da atividade física
+      </h1>
+      <h1>{id}</h1>
+      <img class="post-image" src={'https://stories-nextjs-v3.vercel.app/assets/imgs/news/news-13.jpg'} alt="">
+      <p>{`Praticar atividade física regularmente traz diversos benefícios para a saúde, como a redução do risco de doenças cardiovasculares e o controle do peso corporal. Além disso, exercitar-se também melhora o humor e ajuda a combater o estresse.`}</p>
+      <p>Tags: #health</p>
+      <h4 class="title">Comments</h4>
+      <Comment/>
+      <div>
+        <h5 class="title">LEAVE A REPLY</h5>
+        <div class="reply-container">
+          <textarea class="text-input" id="w3review" name="w3review" placeholder="Write Comment" rows="4" cols="50"></textarea>
+          <button class="submit-button">POST COMMENT</button>
+        </div>
+      </div>
+    </div>
+	</body>
+</html>
+
+
+
+<style>
+  .page-container {
+    padding: 40px;
+  }
+  .post-image {
+    height: 200px;
+
+  }
+  .comment-card {
+    display: flex;
+  }
+
+	.profile-image {
+		height: 64px;
+		width: 64px;
+		border-radius: 50%;
+		margin-right: 15px;
+	}
+  .comment-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .comment-details {
+    display: flex;
+  }
+  .author {
+    margin-right: 10px;
+  }
+
+.title {
+  font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #eaecee;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+  .reply-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text-input {
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+
+  .submit-button {
+    margin-top: 20px;
+    width: 232px;
+    display: inline-block;
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 54px;
+    border-radius: 30px;
+    color: #fff;
+    border: 1px solid #5869da;
+    text-transform: uppercase;
+    background: #5869da;
+    cursor: pointer;
+    transition: all .3s linear 0s;
+  }
+ </style>

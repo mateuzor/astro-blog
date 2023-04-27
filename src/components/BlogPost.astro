@@ -1,31 +1,19 @@
 ---
-const tags = ["#covid", "#inspiration", "#work online", "#stay home"]
+const { id, title, tag , date, image } = Astro.props
 ---
 
-<div class="title-row">
-    <h3>Posts</h3>
-    <ul class="tags-list">
-        Hot Tags:{tags.map((tag)=> {
-            return <li>
-            <a href="">{tag.toLocaleLowerCase()}</a>
-        </li>
-        })}
-    </ul>
-</div>
-<a href="/posts/1">
+<a href={`/posts/${id}`}>
     <div class="post">
-        <div class="post-image">
-        </div>
+        <img class="post-image" src={image} alt="">
         <div class="post-details">
-            <a class="post-tag" href="/category/work">
-                <p>work</p>
+            <a class="post-tag" href={`categories/${tag}`}>
+                <p>{tag}</p>
             </a>
             <h4 class="post-title">
-                Helpful Tips for Working from Home as a Developer
+                {title}
             </h4>
             <div class="post-info">
-                <p>27 August</p>
-                <p>23k Views</p>
+                <p>{date}</p>
             </div>
         </div>
     </div>
@@ -47,14 +35,15 @@ text-decoration: none;
 
 .post {
 width: 348px;
+  margin: 8px;
 box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 cursor: pointer;
 }
 .post-image {
-background-image: url('public/assets/coffe.jpeg');
+/* background-image: url('public/assets/coffe.jpeg'); */
 width: 348px;
 height: 220px;
-background-size: cover;
+/* background-size: cover; */
 }
 .post-details {
 padding: 20px;
