@@ -12,18 +12,21 @@ const posts = [
       "https://images.unsplash.com/photo-1486218119243-13883505764c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80",
     comments: [
       {
+        id: 1,
         autor: "João",
         mensagem: "Ótimo artigo!",
         data: "2022-10-15",
         hora: "14:30",
       },
       {
+        id: 2,
         autor: "Maria",
         mensagem: "Obrigado por compartilhar suas ideias!",
         data: "2022-10-16",
         hora: "10:15",
       },
       {
+        id: 3,
         autor: "José",
         mensagem: "Gostei muito do conteúdo, parabéns!",
         data: "2022-10-17",
@@ -44,18 +47,21 @@ const posts = [
       "https://upload.wikimedia.org/wikipedia/commons/5/5a/Books_HD_%288314929977%29.jpg",
     comments: [
       {
+        id: 1,
         autor: "João",
         mensagem: "Ótimo artigo!",
         data: "2022-10-15",
         hora: "14:30",
       },
       {
+        id: 2,
         autor: "Maria",
         mensagem: "Obrigado por compartilhar suas ideias!",
         data: "2022-10-16",
         hora: "10:15",
       },
       {
+        id: 3,
         autor: "José",
         mensagem: "Gostei muito do conteúdo, parabéns!",
         data: "2022-10-17",

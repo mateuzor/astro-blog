@@ -3,10 +3,8 @@ import Comment from "../../components/Comment.astro";
 import posts from "data/posts.js";
 
 export async function getStaticPaths() {
-  // const products = await fetchProducts();
 
   return posts.map((post) => {
-    console.log(posts)
     return {
       params: { id: post.id.toString() },
       props: { post },
@@ -15,9 +13,14 @@ export async function getStaticPaths() {
 }
 
 const { id } = Astro.params;
+const { post } = Astro.props
 const filteredPostsById: any = posts.filter(post => String(post.id) === String(id));
-
 ---
+
+<script>
+  console.log(2 + 2);
+</script>
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -29,14 +32,24 @@ const filteredPostsById: any = posts.filter(post => String(post.id) === String(i
 	<body>
 		<div class="page-container">
       <h1>
-        A importância da atividade física
+        {post.titulo}
       </h1>
-      <h1>{id}</h1>
-      <img class="post-image" src={'https://stories-nextjs-v3.vercel.app/assets/imgs/news/news-13.jpg'} alt="">
-      <p>{`Praticar atividade física regularmente traz diversos benefícios para a saúde, como a redução do risco de doenças cardiovasculares e o controle do peso corporal. Além disso, exercitar-se também melhora o humor e ajuda a combater o estresse.`}</p>
-      <p>Tags: #health</p>
+      <img class="post-image" src={post.image} alt="">
+      <p>{post.conteudo}</p>
+      <div class="tags-container">
+      <p>Tag:</p>
+      <p>#{post.tag}</p>
+      </div>
       <h4 class="title">Comments</h4>
-      <Comment/>
+      {post?.comments?.map((comment) => {
+				return <Comment 
+        id={comment.id} 
+        author={comment.autor} 
+        message={comment.mensagem} 
+        date={comment.data} 
+        hour={comment.hora} />
+        })}
+			</div>
       <div>
         <h5 class="title">LEAVE A REPLY</h5>
         <div class="reply-container">
@@ -57,6 +70,10 @@ const filteredPostsById: any = posts.filter(post => String(post.id) === String(i
   .post-image {
     height: 200px;
 
+  }
+
+  .tags-container {
+    display: flex;
   }
   .comment-card {
     display: flex;

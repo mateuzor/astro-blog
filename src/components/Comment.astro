@@ -1,13 +1,14 @@
 ---
 import Image from "../components/Image.astro";
+const { author, message, date, hour } = Astro.props
 ---
   <div class="comment-container">
     <Image image={"https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png"}/>
     <div class="comment-content">
-      <p>Vestibulum euismod, leo eget varius gravida, eros enim interdum urna, non rutrum enim ante quis metus. Duis porta ornare nulla ut bibendum</p>
+      <p>{message}</p>
       <div class="comment-details">
-        <p class="author">Rosie</p>
-        <p>7 August 2023 at 3:12 PM</p>
+        <p class="author">{author}</p>
+        <p>{date} {hour}</p>
       </div>
     </div>
   </div>
