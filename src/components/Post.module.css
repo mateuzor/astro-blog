@@ -1,0 +1,7 @@
+.postImage {
+  height: 200px;
+}
+
+.tagsContainer {
+  display: flex;
+}

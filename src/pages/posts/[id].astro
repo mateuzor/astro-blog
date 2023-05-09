@@ -1,5 +1,6 @@
 ---
-import Comment from "../../components/Comment.astro";
+import CommentReact from "@components/CommentReact";
+import Post from "@components/Post";
 import posts from "data/posts.js";
 
 export async function getStaticPaths() {
@@ -14,13 +15,7 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const { post } = Astro.props
-const filteredPostsById: any = posts.filter(post => String(post.id) === String(id));
 ---
-
-<script>
-  console.log(2 + 2);
-</script>
-
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -31,38 +26,16 @@ const filteredPostsById: any = posts.filter(post => String(post.id) === String(i
 	</head>
 	<body>
 		<div class="page-container">
-      <h1>
-        {post.titulo}
-      </h1>
-      <img class="post-image" src={post.image} alt="">
-      <p>{post.conteudo}</p>
-      <div class="tags-container">
-      <p>Tag:</p>
-      <p>#{post.tag}</p>
-      </div>
+      <Post client:load id={id}/> 
       <h4 class="title">Comments</h4>
-      {post?.comments?.map((comment) => {
-				return <Comment 
-        id={comment.id} 
-        author={comment.autor} 
-        message={comment.mensagem} 
-        date={comment.data} 
-        hour={comment.hora} />
-        })}
+			 <CommentReact 
+        client:load
+        postId={id}
+       />
 			</div>
-      <div>
-        <h5 class="title">LEAVE A REPLY</h5>
-        <div class="reply-container">
-          <textarea class="text-input" id="w3review" name="w3review" placeholder="Write Comment" rows="4" cols="50"></textarea>
-          <button class="submit-button">POST COMMENT</button>
-        </div>
-      </div>
     </div>
 	</body>
 </html>
-
-
-
 <style>
   .page-container {
     padding: 40px;
@@ -71,7 +44,6 @@ const filteredPostsById: any = posts.filter(post => String(post.id) === String(i
     height: 200px;
 
   }
-
   .tags-container {
     display: flex;
   }

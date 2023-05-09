@@ -1,12 +1,10 @@
 ---
-import BlogPost from '../components/BlogPost.astro';
 import Category from '../components/Category.astro';
 import Banner from '../components/Banner.astro';
-import posts from 'data/posts';
+import Posts from '@components/Posts';
 
 const tags = ["health", "learning"]
 ---
-
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -28,22 +26,17 @@ const tags = ["health", "learning"]
 					})}
 				</ul>
 			</div>
-			<div class="posts-container">
-			{posts.map((post) => {
-				console.log(posts)
-				return <BlogPost id={post.id} title={post.titulo} tag={post.tag} date={post.data_criacao} image={post.image} />})}
-			</div>
+			<Posts client:load/>
 			<Category/>
 		</div>
 	</body>
 </html>
-
 <style>
-	.page-container {
-	padding: 40px;
-	}
+.page-container {
+padding: 40px;
+}
 
-	.title-row {
+.title-row {
 display: flex;
 justify-content: space-between;
 }
@@ -56,13 +49,9 @@ margin-right: 5px;
 text-decoration: none;
 }
 
-	.posts-container {
-		flex-wrap: wrap;
-		display: flex;
-		flex-direction: row;
-	}
-
-	.color {
-		color:red;
-	}
+.posts-container {
+flex-wrap: wrap;
+display: flex;
+flex-direction: row;
+}
  </style>
